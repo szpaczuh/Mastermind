@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src='/js/skrypt.js'></script>
+</head>
+
+<body>
+    <p>Welcome to
+        <%= title %>
+    </p>
+    <p>
+        <%= opis %>
+    </p>
+
+    <div id="form">
+        <label for="size">Podaj kolumny</label>
+        <input type="number" name="size" id="size">
+        <br>
+        <label for="dim">Podaj kolory</label>
+        <input type="number" name="dim" id="dim">
+        <br>
+        <label for="moves">Podaj max</label>
+        <input type="number" name="moves" id="moves">
+        <br>
+        <label for="submit"></label>
+        <button id="btn2">Zatwierdz</button>
+        <div id="opcje"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="size" id="amount"></label>
+    <input type="number" name="liczby" id="liczby">
+    <br>
+    <button id="btn1">Zatwierdz</button>
+    <div id="liczbydiv"></div>
+
+</body>
+
+</html>
