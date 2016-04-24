@@ -33,7 +33,11 @@ jQuery(document).ready(function () {
             , success: function (res) {
                 result = res.data;
                 var wartosc = dim - 1;
-                $('#form').html("Ilosc liczb " + size + " od 0 do " + wartosc + ".Maksymalna ilosc ruchów: " + moves);
+                $('#size').prop('disabled', true);
+                $('#dim').prop('disabled', true);
+                $('#moves').prop('disabled', true);
+                $("#one").text("Ilosc liczb " + size + " od 0 do " + wartosc + "(wliczamy zero).Maksymalna ilosc ruchów: " + moves);
+
             }
         });
 
@@ -123,7 +127,36 @@ jQuery(document).ready(function () {
                             $('#liczby').prop('disabled', true);
                             $('#btn1').prop('disabled', true);
                             zgadles = true;
+                            $('#liczbydiv').append('<button id="btn3">Nowa gra</button>');
+                            $('#btn3').click(function () {
+                                $('#size').prop('disabled', false);
+                                $('#dim').prop('disabled', false);
+                                $('#moves').prop('disabled', false);
+                                $('#size').html('');
+                                $('#dim').html('');
+                                $('#moves').html('');
+                                $.ajax({
+                                    url: "/play/size/" + data.retVal.puzzlesize + "/dim/" + data.retVal.puzzledim + "/max/" + data.retVal.puzzlemax + "/"
+                                    , type: 'get'
+                                    , dataType: 'json'
+                                    , async: false
+                                    , success: function (res) {
 
+
+                                        result = res.data;
+                                        $('#liczby').prop('disabled', false);
+                                        $('#btn1').prop('disabled', false);
+                                        $('#liczbydiv').html('');
+
+                                    }
+
+                                });
+
+
+
+
+                            })
+                            counting = 0;
                         }
                     } else {
 
@@ -154,7 +187,10 @@ jQuery(document).ready(function () {
                     $('#liczby').prop('disabled', true);
                     $('#btn1').prop('disabled', true);
                     $('#btn3').click(function () {
-                        console.log("Dziala");
+                        $('#size').prop('disabled', false);
+                        $('#dim').prop('disabled', false);
+                        $('#moves').prop('disabled', false);
+
 
                         $.ajax({
                             url: "/play/size/" + data.retVal.puzzlesize + "/dim/" + data.retVal.puzzledim + "/max/" + data.retVal.puzzlemax + "/"
@@ -166,7 +202,6 @@ jQuery(document).ready(function () {
                                 $('#liczby').prop('disabled', false);
                                 $('#btn1').prop('disabled', false);
                                 $('#liczbydiv').html('');
-
                             }
 
                         });
