@@ -52,7 +52,7 @@ jQuery(document).ready(function () {
         var liczby = $('#liczby').val();
 
 
-
+        var zgadles = false;
         var random = [];
         var zgadles = [];
         for (var i = 0; i < liczby.length; i++) {
@@ -98,27 +98,31 @@ jQuery(document).ready(function () {
                         var iloscbialych = "";
                         var iloscpustych = "";
 
-                        if (blackdots !== data.retVal.length) {
-                            for (var i = 0; i < blackdots; i++) {
-                                iloscczarnych += '<div id="czarne"> </div>  ';
-                            }
+                        for (var i = 0; i < blackdots; i++) {
+                            iloscczarnych += '<div id="czarne"> </div>  ';
+                        }
 
-                            for (var i = 0; i < whitedots; i++) {
-                                iloscbialych += '<div id="biale"> </div>  ';
-                            }
-                            bluedotsminus = bluedots - blackdots - whitedots;
-                            for (var i = 0; i < bluedotsminus; i++) {
-                                iloscpustych += '<div id="puste"></div>  ';
-                            }
+                        for (var i = 0; i < whitedots; i++) {
+                            iloscbialych += '<div id="biale"> </div>  ';
+                        }
+                        bluedotsminus = bluedots - blackdots - whitedots;
+                        for (var i = 0; i < bluedotsminus; i++) {
+                            iloscpustych += '<div id="puste"></div>  ';
+                        }
+                        if (blackdots !== data.retVal.length) {
+
 
                             $('#liczbydiv').append(iloscczarnych);
                             $('#liczbydiv').append(iloscbialych);
                             $('#liczbydiv').append(iloscpustych + '<br>');
                         } else {
+                            $('#liczbydiv').append(iloscczarnych);
+                            $('#liczbydiv').append(iloscbialych);
+                            $('#liczbydiv').append(iloscpustych + '<br>');
                             $('#liczbydiv').append("<h1>ZGADLES</h1>");
                             $('#liczby').prop('disabled', true);
                             $('#btn1').prop('disabled', true);
-
+                            zgadles = true;
 
                         }
                     } else {
@@ -144,7 +148,7 @@ jQuery(document).ready(function () {
 
 
 
-                } else {
+                } else if (counting > data.retVal.puzzlemax - 1 && zgadles !== true) {
                     $('#liczbydiv').append("<h1>Nie udalo Ci sie!</h1>");
                     $('#liczbydiv').append('<button id="btn3">Nowa gra</button>');
                     $('#liczby').prop('disabled', true);
