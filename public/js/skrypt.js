@@ -92,7 +92,7 @@ jQuery(document).ready(function () {
                         console.log(data);
                         var blackdots = data.retVal.blackdots;
                         var whitedots = data.retVal.whitedots;
-                        var bluedots = data.retVal.puzzledim;
+                        var bluedots = data.retVal.puzzlesize;
                         var bluedotsminus;
                         var iloscczarnych = "";
                         var iloscbialych = "";
